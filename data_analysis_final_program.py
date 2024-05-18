@@ -18,14 +18,14 @@ print()
 print("I hope you enjoy to find some interesting data on your analysis.")
 
 total_expectancy = 0
-line_count = -1
+line_count = 0
 
 with open("life-expectancy.csv") as life_expectancy_file:
 
     year_of_interest = int(input("\nEnter the year of interest: "))
 
     max_expectancy = 0
-    min_expectancy = 999999
+    min_expectancy = float('inf')
     country_max = ""
     country_min = ""
     year_max = ""
@@ -61,14 +61,14 @@ print(f"The overall min life expectancy is {min_expectancy} from {country_min} i
 with open("life-expectancy.csv") as life_expectancy_file:
 
     max_expectancy = 0
-    min_expectancy = 999999
+    min_expectancy = float('inf')
     country_max = ""
     country_min = ""
     year_max = ""
     year_min = ""
 
     total_expectancy = 0
-    line_count = -1
+    line_count = 0
 
     for line in life_expectancy_file:
         line = line.strip()
@@ -81,7 +81,7 @@ with open("life-expectancy.csv") as life_expectancy_file:
         try:
             year = int(year)
             expectancy = float(expectancy)
-        except ValueError:
+        except (ValueError, IndexError):
             continue
 
         total_expectancy += expectancy
